@@ -285,15 +285,31 @@ Nessa aula prática teremos nosso primeiro contato com o Async Storage na práti
 
 **Obtendo os grupos**
 
+Nessa aula prática vamos aprender como buscar dados que foram salvos no Async Storage, aprendendo a utilizar boas práticas para deixar o código sempre integro.
+
 **Identificando o foco na tela**
+
+Nessa aula prática vamos aprender com o utilizar o hook useFocusEffect para identificar sempre que o usuário estiver acessando uma tela para carregar os dados do storage.
+
+Iremos ver também as principais diferenças entre ele e o hook useEffect.
 
 **Criando uma classe de erros personalizada**
 
+Nessa aula prática vamos aprender a como criar uma classe de erros personalizada para que possamos identificar quais são os erros gerados pela aplicação e quais são os erros lançados por ações do usuário.
+
 **Tratando exceções**
+
+Nessa aula prática vamos aprender com lidar com os erros que ocorrem na aplicação e como podemos exibir de melhor forma para o usuário através de alertas na aplicação.
 
 **Abrindo turmas**
 
+Nessa aula prática vamos fazer a navegação para a tela Players através da listagem de turmas na tela inicial.
+
 **Armazenando Players**
+
+Nessa aula prática aula vamos aprender como armazenar os players dentro de uma turma em específico repassando também em qual time aquele player está inserido.
+
+Para isso informamos a turma de forma dinâmica como chave no Async Storage.
 
 **Listando Players**
 

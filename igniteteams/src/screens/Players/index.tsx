@@ -1,26 +1,26 @@
-import { FlatList } from "react-native";
-import { ButtonIcon } from "../../components/ButtoIcon";
-import { Filter } from "../../components/Filter";
-import { Header } from "../../components/Header";
-import { Highlight } from "../../components/Highlight";
-import { Input } from "../../components/Input";
-import { Container, Form, HeaderList, NumberOfPlayers } from "./styles";
-import { useState } from "react";
-import { PlayerCard } from "../../components/PlayerCard";
-import { ListEmpty } from "../../components/ListEmpty";
-import { Button } from "../../components/Button";
-import { useRoute } from "@react-navigation/native";
+import { FlatList } from "react-native"
+import { ButtonIcon } from "../../components/ButtoIcon"
+import { Filter } from "../../components/Filter"
+import { Header } from "../../components/Header"
+import { Highlight } from "../../components/Highlight"
+import { Input } from "../../components/Input"
+import { Container, Form, HeaderList, NumberOfPlayers } from "./styles"
+import { useState } from "react"
+import { PlayerCard } from "../../components/PlayerCard"
+import { ListEmpty } from "../../components/ListEmpty"
+import { Button } from "../../components/Button"
+import { useRoute } from "@react-navigation/native"
 
 type RouteParams = {
-  group: string;
-};
+  group: string
+}
 
 export function Players() {
-  const [team, setTeam] = useState("Time A");
-  const [players, setPlayers] = useState(["Rodrigo", "Vinicius Jr"]);
+  const [team, setTeam] = useState("Time A")
+  const [players, setPlayers] = useState(["Rodrigo", "Vinicius Jr"])
 
-  const route = useRoute();
-  const { group } = route.params as RouteParams;
+  const route = useRoute()
+  const { group } = route.params as RouteParams
 
   return (
     <Container>
@@ -63,5 +63,5 @@ export function Players() {
 
       <Button title="Remover Turma" type="SECONDARY" />
     </Container>
-  );
+  )
 }
