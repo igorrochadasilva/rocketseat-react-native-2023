@@ -313,20 +313,59 @@ Para isso informamos a turma de forma dinâmica como chave no Async Storage.
 
 **Listando Players**
 
+Nessa aula prática vamos aprende como podemos listar todas as pessoas de um grupo em específico, informando de forma dinâmica o grupo como uma chave dinâmica do Async Storage.
+
+Aprendemos também como evitar que no momento do cadastro seja possível cadastrar pessoas com o mesmo nome em uma turma.
+
 **Carregando Players pelo Grupo e Time**
+
+Nessa aula prática vamos aprender boas práticas de clean code sobre utilização de funções descritivas.
+
+Iniciamos a criação da função que irá servir para buscar as pessoas de uma turma, separando elas por time.
 
 **Filtrando por time**
 
+Nessa aula prática vamos aprender como realizar o filtro entre times sempre que o filtro selecionado mudar, para isso vamos aprender como utilizar o hook useEffect para identificarmos quando essa condição de filtro ativo for alterada.
+
 **Melhorando a usabilidade**
+
+Nessa aula prática vamos aplicar algumas estratégias para melhorar a usabilidade no momento de cadastro de novas pessoas no time.
+
+Alguns desses recursos são
+
+Inputs controlados para monitorar o valor do input para podermos limpar ao final do cadastro.
+Trabalhar com referências para remover o foco do input.
+Utilizar o onSubmitEditing para realizar o cadastro.
 
 **Removendo Player do Grupo**
 
+Nessa aula prática vamos remover players de uma turma, para isso vamos fazer uma filtragem em todos os players de um grupo excluindo o players escolhido e inserindo os outros novamente no Async Storage.
+
 **Remover Grupo**
+
+Nessa aula prática vamos aprender a remover dados do Async Storage, utilizando a função removeItem.
+
+Vamos também remover todos os players de um grupo, caso ele seja removido para não ocupar espaço desnecessário no storage do dispositivo.
 
 **Recap**
 
+Nessa aula de revisão prática iremos repassar por todo o app, analisando os principais passos que realizamos, funcionalidades que implementamos e código que desenvolvemos para garantir o correto funcionamento da aplicação.
+
 **Refactor do Loading**
+
+Nessa aula prática vamos refatorar a lógica de exibição do Loading nas telas de Groups e Players, movendo a função que desativa o isLoading para dentro do finally.
 
 **Encerramento**
 
+Nessa aula de revisão prática iremos repassar por todo o app, analisando os principais passos que realizamos, funcionalidades que implementamos e código que desenvolvemos para garantir o correto funcionamento da aplicação.
+
 **Quiz - Local Storage**
+
+`1. Qual dos seguintes métodos salva informações no AsyncStorage?`
+R: AsyncStorage.setItem
+
+`2. O que melhor descreve o PropDrilling?`
+R: Estratégia onde você repassa propriedades entre componentes até você chegar no componente desejado.
+
+`3. Qual a maneira correta de salvar objetos no AsyncStorage?`
+R: await AsyncStorage.setItem('@app:key', JSON.stringify({ id: 1, name: 'Item 1' }));
