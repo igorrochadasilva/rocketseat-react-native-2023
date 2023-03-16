@@ -582,3 +582,383 @@ Falso
 Questão 3. Qual a vantagem de utilizar Schema Validation com yup?
 Resposta
 Podemos definir um formato de dados no formulário e utilizar validações que vem por padrão no yup.
+
+## Fundamentos
+
+**Introdução - Integração com back-end**
+Nessa aula introdutória vamos conversar sobre o que será ensinado no módulo como consumo de api, refresh token, upload de imagens e muito mais.
+
+**Sobre a aplicação**
+Nessa aula introdutória vamos relembrar do projeto desenvolvido no módulo passado, dando continuidade nele nesse novo módulo.
+
+**Sobre o back-end**
+
+Nessa aula introdutória vamos executar o back-end que será a API da nossa aplicação.
+Vamos explicar como essa API será útil para o desenvolvimento desse módulo. Vamos ver como podemos acessar a documentação de rotas dessa API.
+
+Link da api: https://github.com/rodrigorgtic/ignitegym-api
+
+**Organizando o projeto**
+
+Nessa aula prática vamos baixar a nossa API e organizar o projeto para termos as pastas da aplicação mobile e do back-end dentro de uma única pasta, para deixarmos nosso projeto mais organizado.
+
+**O que é uma API**
+
+Nessa aula introdutória vamos aprender o que é uma API, utilizando uma analogia a um restaurante para podermos entender melhor com a API funciona na teoria.
+
+**Métodos HTTP**
+
+Nessa aula introdutória vamos conhecer os metódos HTTP que uma API Rest utiliza para se comunicar com nossa aplicação. Vamos conhecer alguns métodos como o GET, POST e etc.
+
+**HTTP Codes**
+Nessa aula introdutória vamos conhecer os HTTP Codes, que são os status que o back-end devolve para o front-end, indicando falha ou sucesso. Vamos repassar pelos tipos de status code entender que cada faixa de status significa.
+
+**Quiz - Fundamentos Integração com backend**
+
+Questão 1. Nas aulas anteriores aprendemos o que é e como funciona uma API. Uma boa definição para descrever uma API seria fazendo uma analogia à um restaurante, onde a onde o garçom seria API, que transita os dados entre cliente(aplicação mobile/web) e a cozinha(servidor).
+Resposta
+Verdadeiro
+
+Questão 2. Aprendemos também o que são Métodos HTTP e para que cada um deles serve em relação a comunicação com a API. Quais desses desse métodos que geralmente utilizamos para atualizar mais de uma informação no nosso backend?
+Resposta
+PUT
+
+Questão 3. Os HTTP Codes servem para indicar o status de uma requisição feita ao backend. Qual HTTP Code indica um erro de autenticação?
+Resposta
+401
+
+## Fetch API
+
+**Proposta**
+
+Descrição
+Nessa aula introdutória vamos falar um pouco sobre um recurso nativo do JavaScript para realizar chamada HTTP, a fetch API.
+
+**Visualizando o banco de dados**
+
+Nessa aula introdutória vamos conhecer a ferramenta que vamos utilizar para visualizar o banco de dados da nossa API, o Beekpeer Studio.
+
+Link para download do beekeper: https://github.com/beekeeper-studio/beekeeper-studio/releases
+
+**Cadastrando usuário**
+
+Nessa aula prática vamos aprender como utilizar o fetch do JavaScript para cadastrar um usuário novo no nosso back-end, utilizando o método POST.
+Vamos aprender como utilizar o nosso IP local para fazermos a conexão com a API.
+
+**Obtendo resposta do back-end**
+Nessa aula prática vamos aprender como podemos receber as respostas que vem do back-end no momento da requisição, utilizando o .then para capturar o retorno da API.
+
+**Async Await**
+
+Nessa aula prática vamos aprender como podemos utilizar o async/await para capturar respostas assíncronas na aplicação no lugar do .then. Vamos ver como funciona o retorno da API, caso não utilizarmos alguma dessas estratégias.
+
+**Entendo o fluxo do back-end**
+
+Nessa aula de revisão vamos repassar pela funcionalidade de cadastrar usuário, entrando na API e entendendo como funcionam os fluxos de validação e cadastro no lado do back-end.
+
+**Quiz - Fetch API**
+
+Questão 1. Nas aulas anteriores utilizamos o fetch para realizar a conexão entre nosso app mobile e nossa API. Qual a forma correta de realizar uma requisição POST utilizando o fetch?
+Resposta
+fetch('<http://localhost:3333/users>', {
+method: 'POST',
+headers: {
+'Accept': 'application/json',
+'Content-Type': 'application/json'
+},
+body: JSON.stringify({ name, email, password })
+});
+
+Questão 2. Qual a finalidade da estratégia de Async/Await na nossa aplicação?
+Resposta
+Garantir que a função aguarde a chamada a API finalizar para seguir com o fluxo da aplicação.
+
+## HTTP Client
+
+**HTTP Client**
+
+Nessa aula introdutória vamos revisar como foi feita a chamada que temos à API até agora utilizando o fecth e vamos conhecer o HTTP Client que iremos utilizar para simplificar a requisições para a API, o axios.
+
+**Instalando o Axios**
+
+Nessa aula prática vamos conhecer um pouco mais sobre o axios, entendendo a proposta por trás dele e vamos instalar essa lib na aplicação para gereciar nossas requisições.
+
+**Definindo nossa API**
+
+Nessa aula prática vamos criar a configuração do axios para facilitar na chamada dele para realizar as requisições para a API, para isso vamos configurar um endereço base para nossas requisições utilizando a propriedade baseURL, que temos dentro do axios.create.
+
+**Utilizando Axios**
+
+Nessa aula prática vamos refatorar a chamada a API de criação de usuários, vamos alterar a chamada via fetch para uma chamada com o axios.
+Vamos comentar sobre as diferenças que temos utilizando as duas estratégias.
+
+**Axios Exceptions**
+
+Nessa aula prática vamos entender como o axios lida com erros que vêm da API, além de erros genéricos que podem acontecer no momento da requisição.
+Vamos comentar como podemos exibir esses erros para o usuário.
+
+**Entendendo Interceptors**
+Nessa aula prática vamos conhecer a funcionalidade de interceptors do axios. Vamos aprender como podemos utilizar esse recurso do axios para interceptar requisições e respostas e podermos trabalhar algum tipo de lógica com essa informações que estão trafegando por nossa requisição.
+
+**Criando o AppError**
+Nessa aula prática vamos criar nossa classe de erro customizada para termos um controler melhor dos erros que ocorrem na nossa aplicação.
+
+**Tratando Erros da API**
+
+Nessa aula prática vamos utilizar os interceptors para podermos tratar os erros que estão acontecendo, com isso vamos poder tratar de forma mais padronizada os erros da nossa aplicação para podermos validar e trabalhar de formas específicas para cada tipo de erro que o ocorre na aplicação.
+Vamos utilizar o useToast do NativeBase para podermos dar um feedback visual para o usuário quando algum erro acontecer.
+
+**Quiz - HTTP Client**
+
+Questão 1. Aprendemos a utilizar o Axios como nosso HTTP client para facilitar requisições para nossa API. Qual a forma correta de definir na url padrão da nossa API, para o Axios?
+Resposta
+export const api = axios.create({
+baseURL: 'http://localhost:3333'
+});
+
+Questão 2. Os "interceptors" do Axios são muito úteis para nossa aplicação, com ele podemos trabalhar com as informações que estão sendo enviadas ou recebidas para a aplicação antes que elas chegam no destino para poderem ser utilizadas da forma que precisarmos.
+Resposta
+Verdadeiro
+
+Questão 3. Uma boa prática é sempre dar um feedback visual para o usuário das ações que ele realiza. Utilizamos os interceptors para tratar os erros da aplicação e para exibir eles para o usuário, nós utilizamos o hook:
+Resposta
+useToast
+
+## Contextos no React Native
+
+**Proposta**
+Nessa aula introdutória vamos falar sobre sobre compartilhamento de informações de conversar sobre como podemos fazer esse tipo de compartilhamento de forma global em nossa aplicação.
+
+**Conceito de Contexto**
+Nessa aula introdutória vamos entender o conceito de Contextos no React. Vamos aprender como podemos utilizar essa estratégia para podermos compartilhar informações entre componentes de forma global sem precisar utilizar Prop Drilling.
+
+**Criando um contexto**
+
+Nessa aula prática vamos iniciar a criação do nosso contexto de autenticação. Vamos entener como esse contexto pode receber e compartilhar valores.
+
+**Tipando contexto**
+
+Nessa aula prática vamos criar um tipagem para nosso contexto, para que a aplicação consiga saber quais dados o nosso contexto pode compartilhar e garantir um padrão para os dados do contexto.
+
+**Unificando o create e provider context**
+Nessa aula prática vamos refatorar nosso AuthContext.tsx e criar nosso Provider customizado, com isso vamos unificar a criação do contexto e o provedor de informações do contexto em um único arquivo.
+
+**Criando seu próprio Hook**
+
+Nessa aula prática vamos criar nosso hook customizado, o useAuth, ele irá nos ajudar facilitando a consumir o nosso contexto. Com esse hook vamos simplificar a formar com que podemos utilizar as informações que nosso contexto expõe para a aplicação.
+
+**Compartilhando estados no contexto**
+
+Nessa aula prática vamos refatorar nosso contexto, movendo os dados que estamos repassando no value do nosso Provider para um estado, com isso podemos manipular os dados desse contexto de forma mais fácil.
+
+**Recapitulando o formulário de SignIn**
+Nessa aula de revisão vamos repassar pelo nossa tela de SignIn, entendendo o que foi alterado para que essa tela consiga executar o login do usuário, validando formulários e etc.
+
+**Atualizando estados no contexto**
+
+Nessa aula prática vamos criar a função signIn, que será responsável por receber e-mail e senha do usuário e atualizar os dados dele no estado do contexto.
+
+**Buscando dados do usuário no back-end**
+Nessa aula prática vamos criar a parte funcional do método de signIn do nosso contexto. Vamos fazer uma requisição para nossa API, receber os dados do usuário devolvido por ela e salvar no estado do contexto.
+
+**Tratando Exceções do handleSignIn**
+
+Nessa aula prática vamos previnir e tratar os erros que podem acontecer no momento do login, na nossa tela de SignIn, adicionando um bloco try/catch para verificar possíveis erros e adicionando um toast para feedback.
+
+**Feedback de SignIn**
+
+Nessa aula prática vamos criar um estado de loading para indicar que a aplicação está realizando uma chamada para API e indicar um feedback visual para o usuário.
+
+**Redirecionar o usuário logado**
+
+Nessa aula prática vamos utilizar o nosso contexto para exibir o grupo de rotas correta para o usuário, baseado em se existe ou não dados do usuário no estado. Caso o usuário esteja logado, exibiremos as rotas da aplicação, caso contrário vamos exibir as rotas de autenticação.
+
+**Instalando o AsyncStorage**
+
+Nessa aula prática vamos instalar o AsyncStorage para podermos persistir os dados do usuário no dispositivo.
+
+`npx expo install @react-native-async-storage/async-storage`
+
+**Persistindo usuário logado**
+
+Nessa aula prática vamos persistir os dados que foram buscados do back-end no dispositivo do usuário, para que nos próximos acessos os dados já estejam disponíveis para utilização. Vamos criar arquivos de configuração, e funções que irão nos ajudar a criar essa funcionalidade.
+
+**Carregando usuário logado**
+
+Nessa aula prática vamos buscar no dispositivo o usuário que foi salvo no momento do login, para isso vamo criar um useEffect que será responsável por verificar os dados armazenados e preencher o estado, caso existam dados armazenados.
+
+**Exibindo Loading enquanto carrega usuário**
+
+Nessa aula prática vamos criar um estado de loading para nosso contexto que irá verificar se estão sendo buscado os dados no dispositivo e exibir um feeback para evitar glitch entre as rotas.
+
+**Exibindo nome do usuário**
+
+Nessa aula prática vamos aproveitar os dados armazenados em nosso contexto para exibir o nome do usuário no Header.
+
+**Exibindo a foto padrão do usuário**
+
+Nessa aula prática vamos configurar nossa aplicação para exibir uma foto padrão para o usuário caso não exista nos dados da API.
+
+**Criando o método signOut**
+
+Nessa aula prática vamos implementar a função de singOut no nosso contexto. Com ele vamos remover os dados do usuário tanto no estado quando no armazenamento do dispositivo.
+
+**Criando conta e logando usuario**
+
+Nessa aula prática vamos implementar a funcionalidade de realizar o login logo após a criação da conta, para que o usuário não precise voltar para tela de login e realizar o login novamente.
+
+**Quiz - Contextos no React Native**
+
+Questão 1. Aprendemos que os contextos são formas de compartilhar informações de formas globais para nossa aplicação. Qual a melhor forma de inicializar um contexto no React Native?
+
+`type AuthContextProps = { signIn: () => void }`
+`const AuthContext = createContext<AuthContextProps>({} as AuthContextProps)`
+
+Questão 2. Já utilizamos exemplos de contexto em nossa aplicação, como o na criação das rotas com o `NavigationContainer` e para compartilhar as...
+R: Verdadeiro
+
+Questão 3. Podemos compartilhar valores do nosso contexto entre vários componentes, sendo eles estados, funções e etc. De qual forma podemos...
+R:
+
+`<AuthContext.Provider`
+`value={{ user, signOut: handleSignOut}}`
+`{children}`
+`</AuthContext.Provider>`
+
+## Autenticação JWT
+
+**Proposta - Autenticação JWT**
+Nessa aula introdutória vamos falar um pouco e entender sobre um conceito de autenticação chamado JSON Web Token (JWT), que iremos utilizar na nossa aplicação.
+
+**Autenticação JWT**
+Nessa aula teórica iremos abordar o fluxo de autenticação do usuário, seja para obter o token da API ao realizar o login, seja para acessar as rotas protegidas da aplicação informando o token nos cabeçalhos da requisição.
+
+**O que é JWT**
+Nessa aula teórica você irá entender melhor o padrão do token que será utilizado na nossa aplicação: o JWT (JSON Web Token).
+
+**Obtendo Token do usuário**
+Nessa curta aula prática você irá verificar que já recebíamos o token na resposta do login.
+
+**Persistindo token do usuário**
+Nessa aula prática iremos criar a estrutura necessária no storage para persistir os dados do token. Tanto a chave AUTH_TOKEN_STORAGE quanto o método storageAuthTokenSave são desenvolvidos nessa etapa.
+
+**Anexando token nas requisições**
+Nessa aula prática você irá preservar o token e anexá-lo nos cabeçalhos das requisições ao realizar o login na aplicação. Para isso utilizaremos o método storageAuthTokenSave e o api.defaults.headers.common['Authorization'].
+
+**Recuperando o token do storage**
+Nessa aula prática iremos criar um novo método para obter os dados do token preservado e também refatorar o nosso AuthContext.tsx para reaproveitar melhor as etapas de preservação de dados e atualização dos estados. Para isso, serão desenvolvidos os métodos userAndTokenUpdate, storageUserAndTokenSave e storageAuthTokenGet.
+
+**Removendo o token do storage**
+Para finalizar essa etapa de preservação do token, iremos criar um novo método para removê-lo da memória: o storageAuthTokenRemove.
+
+**Quiz - Autenticação JWT**
+
+Questão 1. O JWT será utilizado para criarmos um fluxo de autenticação para gerenciar o acesso do usuário no app. Esse token será obtido por meio da requisição de login do usuário via email/senha e será anexado nas requisições futuras para ele ter acesso às rotas privadas.
+Resposta
+Verdadeiro
+
+Questão 2. O Json Web Token, também conhecido como JWT, é formado por três partes principais. Escolha a alternativa abaixo que não corresponde a uma delas:
+Resposta
+Auth Flow: Opção que define o meio de autenticação a ser utilizado.
+
+## Consumindo o Back-end
+
+**Proposta - Consumindo o Back-end**
+
+**Buscando e Listando Grupos**
+
+Nessa aula prática iremos começar a implementar o consumo da API na nossa aplicação. Começaremos pela página Home, adicionando a busca do grupos sempre que a página for montada via o novo método fetchGroups e com auxílio do useEffect.
+
+**Buscando Exercícios por grupo**
+
+Nessa aula prática você irá buscar os exercícios da API dependendo do grupo selecionado. Para isso, você desenvolverá o método fetchExercisesByGroup que será chamada sempre que a página for focada ou o estado groupSelected for alterado.
+
+**Criando o ExerciseDTO**
+
+Nessa aula prática iremos desenvolver o nosso primeiro DTO, arquivos utilizados para auxiliar na tipagem dos dados recebidos via API. Dessa forma, criaremos o ExerciseDTO que será utilizado na tipagem do estado exercises.
+
+**Exibindo exercícios por grupo**
+Com a tipagem e atualização do estado exercises implementados na aula anterior, você irá prosseguir para o consumo desses dados no componente ExerciseCard.
+
+**Carregando imagem**
+Continuando a exibição dos dados corretos no ExerciseCard, você irá consumir a imagem de thumbnail com auxílio do api.defaults.baseURL.
+
+**Utilizando componente de loading**
+Nessa aula prática iremos ajustar a nossa aplicação para exibir o ícone de carregamento enquanto os dados dos grupos e exercícios do grupo ainda não foram obtidos da API. Para isso, utilizaremos um estado isLoading e o nosso componente já desenvolvido Loading.
+
+**Obtendo o ID do Exercício**
+
+Nessa aula prática você irá ajustar a tipagem das rotas autenticadas e passar o id do exercício como parâmetro na navegação para a tela Exercise.
+
+**Exibindo detalhes do Exercício**
+Com o id do exercício recebido, iremos busca-lo dos parâmetros da rota, consumir a API em busca dos dados do exercício especificado, popular o estado e exibir essas informações tela.
+
+**Cuidando do carregamento**
+
+Assim como você realizou na tela Home, é precisa apresentar um ícone de carregamento enquanto os dados do exercício não foram recebidos da API. Novamente iremos utilizar um estado isLoading e o componente Loading.
+
+**Registrando histórico**
+Agora que os dados já estão sendo corretamente apresentados na tela Exercise, é preciso implementar a funcionalidade de registrar o exercício como realizado. Para isso, desenvolveremos a função handleExerciseHistoryRegister para registrar na nossa API o exercício realizado e navegar o usuário para a tela History ao final do processo.
+
+**Carregando histórico**
+
+Com os exercícios sendo registrados na API, chegou a hora de deixarmos a nossa tela History com os dados dinâmicos. Para isso, começaremos implementado a função fetchHistory que consumirá os dados da API e será executada toda vez que a tela for focada.
+
+**Listando o histórico**
+
+Nessa aula você irá começar a apresentação em tela dos dados do histórico que obteve pela API na aula anterior. Para isso, você irá construir DTOs para tipar o estado exercise, além de atualizá-lo com os dados recebidos da API.
+
+**Exibindo dados do histórico**
+Para finalizar a apresentação do dados na tela History, iremos repassar os dados do estado exercise para dentro de cada HistoryCard.
+
+**Carregando dados do usuário no profile**
+
+Nessa aula prática você irá implementar o react-hook-form nos inputs de nome e email da tela Profile. Desde a criação da tipagem do formulário até a definição dos Controllers.
+
+**Obtendo dados do usuário para atualizar**
+Prosseguindo com a implementação do react-hookf-form, iremos implementar os Controllers nos inputs restantes e também lidar com o envio dos dados do formulário via handleSubmit.
+
+**Preparando a validação do formulário**
+
+Com o controle dos inputs e recebimento dos dados prontos, você irá iniciar a validação do formulário. Para isso, criaremos um modelo inicial do schema e utilizaremos o resolver do Yup para repassar os erros para os inputs via a prop errorMessage.
+
+**Validando a senha**
+Continuando com a validação dos inputs, iremos criar o schema para a validação dos campos de senha nova e confirmação da nova senha.
+
+**Validação condicional da senha**
+
+Nessa aula prática você irá ajustar a validação de senha para que o campo de confirmação da nova senha seja validado condicionalmente, ou seja, apenas quando o campo nova senha estiver preenchido. Para isso, utilizaremos o método when do Yup.
+
+**Ajuste na validação da senha**
+Para finalizar essa etapa de validação, iremos ajustar a validação condicional para ser atualizada em tempo real.
+
+**Atualizando usuário no back-end**
+Nessa aula prática você irá implementar a atualização do perfil do usuário no banco de dados. Para isso, será implementada a lógica da função handleProfileUpdate.
+
+**Atualizando dados do usuário no storage e estado**
+
+Nessa aula prática iremos atualizar os dados tanto no armazenamento do dispositivo quanto no estado do Contexto. Para isso, criaremos a função updateUserProfile no nosso contexto para atualizar o estado user e atualizar o storage pela função storageUserSave.
+
+**Testando a nova senha**
+
+Para finalizar esse cluster de consumo do backend, iremos testar juntos a atualização da senha via tela de Perfil.
+
+**Quiz - Consumindo o Back-end**
+
+Questão 1. O código abaixo representa uma maneira de fazer uma requisição `GET` na rota `login` de uma API local passando um objeto com as chaves `name` e `email` no `body`: `jsx axios.post('https://localhost:3000/login', { name, email }); `
+Resposta
+Falso
+
+Questão 2. DTO são utilizados para tipar a resposta das requisições a API, facilitando assim o uso dos dados recebidos do back-end.:
+Resposta
+Verdadeiro
+
+Questão 3. Assinale abaixo a maneira correta de se receber um parâmetro das rotas:
+Resposta
+const route = useRoute();
+
+const id = route.params?.id;
+
+Questão 4. Escolha a alternativa que representa um caso incorreto de uso de um método HTTP:
+Resposta
+Requisição POST para realizar a busca de registros no banco de dados.

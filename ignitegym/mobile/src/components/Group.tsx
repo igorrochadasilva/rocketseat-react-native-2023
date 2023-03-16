@@ -9,7 +9,7 @@ export function Group({ name, isActive, ...rest }: Props) {
   return (
     <Pressable
       mr={3}
-      w={24}
+      w={32}
       h={10}
       bg="gray.600"
       rounded="md"
