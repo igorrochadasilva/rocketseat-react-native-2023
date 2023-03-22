@@ -14,6 +14,8 @@ import * as FileSystem from "expo-file-system"
 
 import { Controller, useForm } from "react-hook-form"
 
+import defaultUserPhotoImg from "@assets/userPhotoDefault.png"
+
 import { Button } from "@components/Button"
 import { Input } from "@components/Input"
 import { ScreenHeader } from "@components/ScreenHeader"
@@ -62,9 +64,6 @@ const profileSchema = yup.object({
 export function Profile() {
   const [isUpdating, setIsUpdating] = useState(false)
   const [photoIsLoading, setPhotoIsLoading] = useState(false)
-  const [userPhoto, setUserPhoto] = useState(
-    "https://github.com/igorrochadasilva.png"
-  )
 
   const toast = useToast()
   const { user, updateUserProfile } = useAuth()
@@ -82,6 +81,7 @@ export function Profile() {
   })
 
   async function handleUserPhotoSelect() {
+    setPhotoIsLoading(true)
     try {
       const photoSelected = await ImagePicker.launchImageLibraryAsync({
         mediaTypes: ImagePicker.MediaTypeOptions.Images,
@@ -89,8 +89,6 @@ export function Profile() {
         aspect: [4, 4],
         allowsEditing: true,
       })
-
-      console.log(photoSelected)
 
       if (photoSelected.canceled) {
         return
@@ -102,15 +100,49 @@ export function Profile() {
           { size: true }
         )
 
-        // if (photoInfo.size && photoInfo.size / 1024 / 1024 > 5) {
-        //   return toast.show({
-        //     title: "Essa imagem é muito grande. Escolha outra menor",,
-        //     placement: 'top',
-        //     bgColor: 'red.500'
-        //   })
-        // }
+        if (photoInfo.size && photoInfo.size / 1024 / 1024 > 5) {
+          return toast.show({
+            title: "Essa imagem é muito grande. Escolha outra menor",
+            placement: "top",
+            bgColor: "red.500",
+          })
+        }
 
-        setUserPhoto(photoSelected.assets[0].uri)
+        const fileExtension = photoSelected.assets[0].uri.split(".").pop()
+
+        const photoFile = {
+          name: `${user.name}.${fileExtension}`.toLocaleLowerCase(),
+          uri: photoSelected.assets[0].uri,
+          type: `${photoSelected.type}/${fileExtension}`,
+        } as any
+
+        const userPhotoUploadForm = new FormData()
+        userPhotoUploadForm.append("avatar", photoFile)
+
+        const avatarUpdatedResponse = await api.patch(
+          "/users/avatar",
+          userPhotoUploadForm,
+          {
+            headers: {
+              "Content-Type": "multipart/form-data",
+            },
+          }
+        )
+
+        const userUpdated = user
+        userUpdated.avatar = avatarUpdatedResponse.data.avatar
+
+        updateUserProfile(userUpdated)
+
+        console.log
+
+        toast.show({
+          title: "Foto atualizada!",
+          placement: "top",
+          bgColor: "green.500",
+        })
+
+        // setUserPhoto(photoSelected.assets[0].uri)
       }
     } catch (error) {
       console.log(error)
@@ -166,7 +198,11 @@ export function Profile() {
             />
           ) : (
             <UserPhoto
-              source={{ uri: userPhoto }}
+              source={
+                user.avatar
+                  ? { uri: `${api.defaults.baseURL}/avatar/${user.avatar}` }
+                  : defaultUserPhotoImg
+              }
               size={PHOTO_SIZE}
               alt="Foto do usuário"
             />

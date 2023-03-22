@@ -962,3 +962,88 @@ const id = route.params?.id;
 Questão 4. Escolha a alternativa que representa um caso incorreto de uso de um método HTTP:
 Resposta
 Requisição POST para realizar a busca de registros no banco de dados.
+
+## Upload de Imagem
+
+**Proposta - Upload de Imagem**
+
+**Preparando dados da foto**
+
+Nessa aula prática iremos começar a preparar nossa aplicação para o envio da foto selecionada para nossa API. Nessa primeira etapa, criaremos um objeto photoFile com alguns dados da foto a ser submetida: name, uri e type.
+
+**Fazendo o Upload da imagem**
+
+Nessa aula prática você irá criar um formulário, e não um objeto, para ser enviado para o backend. Para isso, utilizaremos o FormData para criação do formulário e o método patch para envio da foto para nossa API, que dessa vez estará um dado do tipo multipart/form-data.
+
+**Atualizando a imagem no dispositivo**
+
+Com a imagem atualizada na API, iremos atualizar o valor da imagem localmente no dispositivo. Para isso, utilizaremos a informação recebida na reposta da API e atualizar o campo avatar do usuário, atualizando tanto o estado user quanto o storage por meio da função updateUserProfile.
+
+**Exibindo o avatar atualizado**
+
+Com os dados do avatar do usuário atualizados tanto no backend quanto no dispositivo, basta exibi-los corretamente na aplicação. Para isso, utilizaremos o campo avatar em conjunto com o api.defaults.baseURL para exibir a imagem da API e caso o usuário ainda não tenha configurado nenhuma exibiremos a userPhotoDefault.png presente nos assets da aplicação.
+
+**Quiz - Upload de imagem**
+
+Questão 1. Para submetermos para a API, é preciso criar um FormData com alguns campos. Assinale a alternativa que não corresponde a um campo necessário para o envio:
+Resposta
+size: O tamanho da imagem a ser submetida.
+
+Questão 2. Com o FormData devidamente criado, assinale a maneira correta de submeter esse conteúdo para a API:
+Resposta
+await api.patch('/users/avatar', formData, {
+headers: {
+'Content-Type': 'multipart/form-data'
+}
+});
+
+## Refresh token
+
+**Proposta - Refresh Token**
+Nessa aula você irá aprender sobre o conceito de Refresh Token e ajustar o tempo de expiração do token na API a fim de facilitar os testes nas aulas seguintes.
+
+**Conceito do Refresh Token**
+
+Nessa aula teórica iremos nos aprofundar no fluxo para obtenção de um novo token a partir do Refresh Token. Para isso, iremos entender desde quando a primeira requisição falhar por conta de um token ter expirado até a execução das filas das requisições que estavam aguardando o novo token ser gerado.
+
+**O Fluxo do Refresh Token**
+Nessa aula prática você irá iniciar o processo de ajuste do Axios para interceptar as requisições que falharam por conta de tokens expirados. Para isso, começaremos adicionando um método registerInterceptTokenManager no nosso api.ts a fim de executá-lo dentro do nosso contexto de autenticação, repassando como argumento o método signOut que será chamado quando as falhas nas requisições forem irreversíveis.
+
+**Incluindo gerenciador de Token na API**
+Nessa aula prática você irá iniciar o processo de ajuste do Axios para interceptar as requisições que falharam por conta de tokens expirados. Para isso, começaremos adicionando um método registerInterceptTokenManager no nosso api.ts a fim de executá-lo dentro do nosso contexto de autenticação, repassando como argumento o método signOut que será chamado quando as falhas nas requisições forem irreversíveis.
+
+**Verificando se token é inválido**
+Nessa aula prática iremos verificar se o error recebido na interceptação é de uma requisição não autorizada cujo motivo da falha é token expirado. Caso contrário, será chamado o método signOut recebido do contexto.
+
+**Armazenando o Refresh Token**
+Nessa aula prática o Rodrigão realiza algumas refatorações no AuthContext.tsx e no storageAuthToken para obter e armazenar o Refresh Token retornado pela API (que inclusive também teve atualizações, então se você possuía uma versão antiga da API por favor baixe a nova).
+
+**Colocando requisições na fila**
+
+Nessa aula prática iremos implementar a lógica da fila das requisições que falharam, failedQueue. Tanto as que serão disparadas novamente ao obter o novo token, quanto as que serão rejeitadas com os erros apropriados. Além disso, é utilizado também a variável isRefreshing para saber quando se deve colocar a requisição na fila ou não.
+
+**Buscando novo token**
+Nessa aula prática você irá aprender como buscar da API e salvar no AsyncStorage um novo token utilizando o Refresh Token. Além disso, vai implementar o fluxo de erro também, disparando o método onFailure da fila failedQueue e deslogando o usuário caso não seja possível obter um novo token JWT válido.
+
+**Reenviando a requisição**
+Nessa aula prática iremos implementar o reenvio das requisições que falharam (failedQueue) usando o novo token obtido da API. Para isso, repassaremos esse novo token para o cabeçalho da originalRequest, para o cabeçalho padrão da nossa instância do Axios e como argumento do método onSuccess da fila de requisições. Por fim, realizamos testes manuais para averiguar o correto funcionamento da atualização do token.
+
+**Loading no carregamento do histórico**
+Nessa aula prática você irá implementar o componente Loading na página de histórico para melhorar a experiência do usuário no momento do carregamento das informações. Além disso, ajustamos o tempo de expiração do token na API para 1d já que finalizamos os testes do Refresh Token.
+
+**Variações de Refresh Token**
+Nessa aula vamos falar um pouco sobre as estratégias de refresh token que podemos utilizar em nossa aplicaçõe.
+Vamos falar sobre a abordagem que utilizamos e exemplificar maneiras diferentes de utilizar essas estratégias.
+
+Obs.: A temática de Refresh Token e seguraça no geral pode ser vista de forma mais aprofundada em nossa tilha de Node.js 💜
+
+**Encerramento do módulo**
+
+**Quiz - Token Refresh**
+
+Questão 1. Para implementarmos o Refresh Token na nossa aplicação, utilizamos o interceptor do axios. Qual foi a principal motivação do uso dessa funcionalidade?
+Resposta
+Interceptar todas as requisições para manipular as que falhassem por token expirado.
+
+Questão 2. Assinale a alternativa correta sobre o conceito de Refresh Token:
+Utilizamos o Refresh token para revalidarmos a sessão de login do usuário na nossa aplicação.
